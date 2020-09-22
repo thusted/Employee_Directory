@@ -3,7 +3,7 @@ import EmployeeDirectory from "./pages/EmployeeDirectory";
 
 function App() {
   return (
-    <EmployeeDirectory/>
+    <EmployeeDirectory />
   );
 }
 

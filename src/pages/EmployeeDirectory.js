@@ -3,8 +3,9 @@ import API from "../utils/API";
 import Container from "../components/Container";
 import SearchForm from "../components/SearchForm";
 import SearchResults from "../components/SearchResults";
+// import Card from "../components/Card"
 
-class Search extends Component {
+class EmployeeDirectory extends Component {
   state = {
     search: "",
     employees: [],
@@ -14,9 +15,7 @@ class Search extends Component {
 
   // When the component mounts, get a list of all available base breeds and update this.state.breeds
   componentDidMount() {
-    API.getEmployees()
-      .then(res => this.setState({ employees: res.data.message }))
-      .catch(err => console.log(err));
+    API.getEmployees();
   }
 
   handleInputChange = event => {
@@ -25,7 +24,7 @@ class Search extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    API.getDogsOfBreed(this.state.search)
+    API.getEmployees(this.state.search)
       .then(res => {
         if (res.data.status === "error") {
           throw new Error(res.data.message);
@@ -51,4 +50,4 @@ class Search extends Component {
   }
 }
 
-export default Search;
+export default EmployeeDirectory;
