@@ -7,7 +7,6 @@ export default {
     return axios.get("https://randomuser.me/api?results=20")
       .then((res) => {
         const employees = res.data.results;
-        console.log(employees);
         return employees.map((employee) => {
           return {
             image: employee.picture.thumbnail,
