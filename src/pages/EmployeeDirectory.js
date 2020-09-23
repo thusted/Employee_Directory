@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import Container from "../components/Container";
-// import Row from "../components/Row";
 
 class EmployeeDirectory extends Component {
   state = {
     search: "",
-    employees: [],
-    results: []
+    employees: []
   };
 
   // When the component mounts, get a list of all available employees and update employees state
