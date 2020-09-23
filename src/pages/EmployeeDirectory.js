@@ -9,8 +9,7 @@ class EmployeeDirectory extends Component {
   state = {
     search: "",
     employees: [],
-    results: [],
-    error: ""
+    results: []
   };
 
   // When the component mounts, get a list of all available base breeds and update this.state.breeds
