@@ -10,7 +10,7 @@ class EmployeeDirectory extends Component {
     results: []
   };
 
-  // When the component mounts, get a list of all available base breeds and update this.state.breeds
+  // When the component mounts, get a list of all available employees and update employees state
   componentDidMount() {
     API.getEmployees()
       .then((employees) => {
@@ -32,11 +32,71 @@ class EmployeeDirectory extends Component {
     });
   };
 
-  // sort() {
-  //   const {employees} = this.state;
+  sort = event => {
+    const value = event.target.value;
+    
+    //Sort employees by name
+    if(value === "name"){
+      const {employees} = this.state;
+      this.setState({
+        employees: employees.sort(function(a,b) {
+          const nameA = a.name.toLowerCase();
+          const nameB = b.name.toLowerCase();
+          if(nameA < nameB) {
+            return -1
+          }
+          if (nameA > nameB) {
+            return 1;
+          }
+        
+          // names must be equal
+          return 0;
+        })
+      })
+    };
 
-  //   console.log(employees);
-  // }
+    //Sort employees by country
+    if(value === "country"){
+      const {employees} = this.state;
+
+      this.setState({
+        employees: employees.sort(function(a,b) {
+          const countryA = a.country.toLowerCase();
+          const countryB = b.country.toLowerCase();
+          if(countryA < countryB) {
+            return -1
+          }
+          if (countryA > countryB) {
+            return 1;
+          }
+        
+          // names must be equal
+          return 0;
+        })
+      })
+    };
+
+    //Sort employees by email
+    if(value === "email"){
+      const {employees} = this.state;
+
+      this.setState({
+        employees: employees.sort(function(a,b) {
+          const emailA = a.email.toLowerCase();
+          const emailB = b.email.toLowerCase();
+          if(emailA < emailB) {
+            return -1
+          }
+          if (emailA > emailB) {
+            return 1;
+          }
+        
+          // names must be equal
+          return 0;
+        })
+      })
+    }
+  };
 
   render() {
     const {employees} = this.state;
@@ -64,9 +124,9 @@ class EmployeeDirectory extends Component {
                   Sort By
                 </button>
                 <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <button className="dropdown-item" onClick={this.sort()}>Name</button>
-                  <button className="dropdown-item" onClick={this.sort()}>Country</button>
-                  <button className="dropdown-item" onClick={this.sort()}>Email</button>
+                  <button value="name" onClick={this.sort} className="dropdown-item">Name</button>
+                  <button value="country" onClick={this.sort} className="dropdown-item">Country</button>
+                  <button value="email" onClick={this.sort} className="dropdown-item">Email</button>
                 </div>
               </div>
             </div>
