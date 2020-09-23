@@ -1,7 +1,7 @@
 import React from 'react';
 import EmployeeDirectory from "./pages/EmployeeDirectory";
 
-function App(props) {
+function App() {
   return (
     <EmployeeDirectory/>
   );

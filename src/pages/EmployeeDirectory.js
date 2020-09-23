@@ -48,17 +48,15 @@ class EmployeeDirectory extends Component {
             name={this.state.results}
           />
           <SearchResults results={this.state.results} />
-          <div>
-            {employees.map((employee) => (
-              <ul>
-                <img alt="employeeImg" src={employee.image}/>
-                <li>Name: {employee.name}</li>
-                <li>Country: {employee.country}</li>
-                <li>Phone: {employee.phone}</li>
-                <li>Email: {employee.email}</li>
-              </ul>
-            ))}
-          </div>
+          {employees.map((employee) => (
+            <ul>
+              <img alt="employeeImg" src={employee.image}/>
+              <li>Name: {employee.name}</li>
+              <li>Country: {employee.country}</li>
+              <li>Phone: {employee.phone}</li>
+              <li>Email: {employee.email}</li>
+            </ul>
+          ))}
         </Container>
       </div>
     );
