@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import Container from "../components/Container";
-import SearchResults from "../components/SearchResults";
+// import Row from "../components/Row";
 
 class EmployeeDirectory extends Component {
   state = {
@@ -32,16 +32,6 @@ class EmployeeDirectory extends Component {
     });
   };
 
-  // handleFormSubmit = event => {
-  //   event.preventDefault();
-  //   API.getEmployees(this.state.search)
-  //     .then((employees) => {
-  //       this.setState({
-  //         employees: employees
-  //       });
-  //     })
-  //     .catch(err => this.setState({ error: err.message }));
-  // };
   render() {
     const {employees} = this.state;
     return (
@@ -49,25 +39,26 @@ class EmployeeDirectory extends Component {
         <Container style={{ minHeight: "80%" }}>
           <h1 className="text-center">Employee Directory</h1>
           <p>
-            Your search is {this.state.search}
+            Your search is {this.state.search.toLowerCase()}
           </p>
           <input
-            value={this.state.search}
+            value={this.state.search.toLowerCase()}
             name="search"
             onChange={this.handleInputChange}
             type="text"
             placeholder="Type a name of an employee"
           />
-          <SearchResults results={this.state.results} />
-          {employees.map((employee) => (
+        
+          {employees.filter(employee => employee.name.toLowerCase().includes(this.state.search)).map(filteredEmployee => (
             <ul>
-              <img alt="employeeImg" src={employee.image}/>
-              <li>Name: {employee.name}</li>
-              <li>Country: {employee.country}</li>
-              <li>Phone: {employee.phone}</li>
-              <li>Email: {employee.email}</li>
+              <img alt="employeeImg" src={filteredEmployee.image}/>
+              <li>Name: {filteredEmployee.name}</li>
+              <li>Country: {filteredEmployee.country}</li>
+              <li>Phone: {filteredEmployee.phone}</li>
+              <li>Email: {filteredEmployee.email}</li>
             </ul>
           ))}
+
         </Container>
       </div>
     );
