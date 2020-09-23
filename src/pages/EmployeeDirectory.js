@@ -3,7 +3,6 @@ import API from "../utils/API";
 import Container from "../components/Container";
 import SearchForm from "../components/SearchForm";
 import SearchResults from "../components/SearchResults";
-// import Card from "../components/Card"
 
 class EmployeeDirectory extends Component {
   state = {
@@ -19,6 +18,7 @@ class EmployeeDirectory extends Component {
         this.setState({ 
         employees: employees
       });
+      
     });
   }
 
@@ -29,15 +29,15 @@ class EmployeeDirectory extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     API.getEmployees(this.state.search)
-      .then(res => {
-        if (res.data.status === "error") {
-          throw new Error(res.data.message);
-        }
-        this.setState({ results: res.data.message, error: "" });
+      .then((employees) => {
+        this.setState({
+          employees: employees
+        });
       })
       .catch(err => this.setState({ error: err.message }));
   };
   render() {
+    const {employees} = this.state;
     return (
       <div>
         <Container style={{ minHeight: "80%" }}>
@@ -45,9 +45,20 @@ class EmployeeDirectory extends Component {
           <SearchForm
             handleFormSubmit={this.handleFormSubmit}
             handleInputChange={this.handleInputChange}
-            breeds={this.state.breeds}
+            name={this.state.results}
           />
           <SearchResults results={this.state.results} />
+          <div>
+            {employees.map((employee) => (
+              <ul>
+                <img alt="employeeImg" src={employee.image}/>
+                <li>Name: {employee.name}</li>
+                <li>Country: {employee.country}</li>
+                <li>Phone: {employee.phone}</li>
+                <li>Email: {employee.email}</li>
+              </ul>
+            ))}
+          </div>
         </Container>
       </div>
     );
