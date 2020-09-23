@@ -32,21 +32,48 @@ class EmployeeDirectory extends Component {
     });
   };
 
+  // sort() {
+  //   const {employees} = this.state;
+
+  //   console.log(employees);
+  // }
+
   render() {
     const {employees} = this.state;
+
     return (
       <div>
         <Container style={{ minHeight: "80%" }}>
           <h1 className="text-center">Employee Directory</h1>
+          <h6 className="text-center">Filter employees by typing in a name or use the dropdown to alphebetically sort employees by category</h6>
+          <br></br>
+          <div className="row text-center">
+            <div className="col">
+              <input
+                value={this.state.search.toLowerCase()}
+                name="search"
+                onChange={this.handleInputChange}
+                type="text"
+                placeholder="Employee Name"
+              />
+            </div>
+            
+            <div className="col">
+              <div className="dropdown">
+                <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Sort By
+                </button>
+                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <button className="dropdown-item" onClick={this.sort()}>Name</button>
+                  <button className="dropdown-item" onClick={this.sort()}>Country</button>
+                  <button className="dropdown-item" onClick={this.sort()}>Email</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br></br>
+          <br></br>
 
-          <input
-            value={this.state.search.toLowerCase()}
-            name="search"
-            onChange={this.handleInputChange}
-            type="text"
-            placeholder="Type a name of an employee"
-          />
-        
           <table className="table">
             <thead>
               <tr>
@@ -57,8 +84,9 @@ class EmployeeDirectory extends Component {
                 <th scope="col">Email</th>
               </tr>
             </thead>
-            {employees.filter(employee => employee.name.toLowerCase().includes(this.state.search)).map(filteredEmployee => (
-              <tbody>
+
+            {employees.filter(employee => employee.name.toLowerCase().includes(this.state.search)).map((filteredEmployee, i) => (
+              <tbody key={i}>
                 <tr>
                   <th scope="row"><img alt="employeeImg" src={filteredEmployee.image}/></th>
                   <td>{filteredEmployee.name}</td>
