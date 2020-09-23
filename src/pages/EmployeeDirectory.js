@@ -56,7 +56,7 @@ class EmployeeDirectory extends Component {
             name="search"
             onChange={this.handleInputChange}
             type="text"
-            placeholder="search"
+            placeholder="Type a name of an employee"
           />
           <SearchResults results={this.state.results} />
           {employees.map((employee) => (
