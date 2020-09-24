@@ -9,7 +9,6 @@ export default {
         const employees = res.data.results;
         return employees.map((employee) => {
           return {
-            id: employee.id,
             image: employee.picture.thumbnail,
             name: employee.name.first + " " + employee.name.last,
             country: employee.location.country,

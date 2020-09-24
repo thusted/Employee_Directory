@@ -100,7 +100,7 @@ class EmployeeDirectory extends Component {
     const {employees} = this.state;
 
     return (
-      <div>
+      <div class="content">
         <Container style={{ minHeight: "80%" }}>
           <h1 className="text-center">Employee Directory</h1>
           <h6 className="text-center">Filter employees by typing in a name or use the dropdown to alphebetically sort employees by category</h6>
