@@ -68,7 +68,7 @@ class EmployeeDirectory extends Component {
             return 1;
           }
         
-          // names must be equal
+          // countries must be equal
           return 0;
         })
       })
@@ -89,7 +89,7 @@ class EmployeeDirectory extends Component {
             return 1;
           }
         
-          // names must be equal
+          // emails must be equal
           return 0;
         })
       })
@@ -100,8 +100,8 @@ class EmployeeDirectory extends Component {
     const {employees} = this.state;
 
     return (
-      <div class="content">
-        <Container style={{ minHeight: "80%" }}>
+      <div className="content">
+        <Container style={{ background: "#FFEFE8"}}>
           <h1 className="text-center">Employee Directory</h1>
           <h6 className="text-center">Filter employees by typing in a name or use the dropdown to alphebetically sort employees by category</h6>
           <br></br>
@@ -132,7 +132,7 @@ class EmployeeDirectory extends Component {
           <br></br>
           <br></br>
 
-          <table className="table">
+          <table className="table" style={{ background: "#CCC5C4"}}>
             <thead>
               <tr>
                 <th scope="col">Image</th>
