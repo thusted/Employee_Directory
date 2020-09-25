@@ -38,8 +38,8 @@ class EmployeeDirectory extends Component {
       const {employees} = this.state;
       this.setState({
         employees: employees.sort(function(a,b) {
-          const nameA = a.name.toLowerCase();
-          const nameB = b.name.toLowerCase();
+          const nameA = a.name;
+          const nameB = b.name;
           if(nameA < nameB) {
             return -1
           }
@@ -59,8 +59,8 @@ class EmployeeDirectory extends Component {
 
       this.setState({
         employees: employees.sort(function(a,b) {
-          const countryA = a.country.toLowerCase();
-          const countryB = b.country.toLowerCase();
+          const countryA = a.country;
+          const countryB = b.country;
           if(countryA < countryB) {
             return -1
           }
@@ -80,8 +80,8 @@ class EmployeeDirectory extends Component {
 
       this.setState({
         employees: employees.sort(function(a,b) {
-          const emailA = a.email.toLowerCase();
-          const emailB = b.email.toLowerCase();
+          const emailA = a.email;
+          const emailB = b.email;
           if(emailA < emailB) {
             return -1
           }
@@ -108,7 +108,7 @@ class EmployeeDirectory extends Component {
           <div className="row text-center">
             <div className="col">
               <input
-                value={this.state.search.toLowerCase()}
+                value={this.state.search}
                 name="search"
                 onChange={this.handleInputChange}
                 type="text"
@@ -143,7 +143,7 @@ class EmployeeDirectory extends Component {
               </tr>
             </thead>
 
-            {employees.filter(employee => employee.name.toLowerCase().includes(this.state.search)).map((filteredEmployee, i) => (
+            {employees.filter(employee => employee.name.includes(this.state.search)).map((filteredEmployee, i) => (
               <tbody key={i}>
                 <tr>
                   <th scope="row"><img alt="employeeImg" src={filteredEmployee.image}/></th>
