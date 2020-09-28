@@ -103,7 +103,7 @@ class EmployeeDirectory extends Component {
       <div className="content">
         <Container style={{ background: "#FFEFE8"}}>
           <h1 className="text-center">Employee Directory</h1>
-          <h6 className="text-center">Filter employees by typing in a name or use the dropdown to alphebetically sort employees by category</h6>
+          <h6 className="text-center">Filter employees by typing in a name or use the dropdown to alphabetically sort employees by category</h6>
           <br></br>
           <div className="row text-center">
             <div className="col">
